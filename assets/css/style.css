@@ -692,3 +692,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* РСО 2.0: красный — акцент для главных действий и меток (бело-сине-красная палитра) */
 .ideas-result span { color: var(--red); }
+
+/* РСО 2.0: на телефонах и планшетах соцсети убраны из шапки — они в меню (бургер) */
+@media (max-width: 1100px) {
+  .header-socials { display: none; }
+}
