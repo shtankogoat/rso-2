@@ -747,3 +747,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* РСО 2.0: меньше пустоты под слоганом */
 .ideas-result { padding-bottom: 0; }
 .section:has(.ideas-result) { padding-bottom: clamp(28px, 3.5vw, 48px); }
+
+/* РСО 2.0: анимация логотипов партнёров при наведении */
+.partner img { filter: grayscale(1); opacity: 0.7; transition: filter 0.35s var(--ease), opacity 0.35s var(--ease), transform 0.35s var(--ease); }
+.partner.reveal.is-in, .partner { transition: opacity 0.9s var(--ease), filter 0.9s var(--ease), transform 0.45s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease); }
+.partner:hover, .partner.reveal.is-in:hover {
+  transform: translateY(-6px);
+  border-color: var(--red);
+  box-shadow: 0 16px 30px -18px rgba(22, 51, 127, 0.45);
+}
+.partner:hover img { filter: none; opacity: 1; transform: scale(1.08); }
+@media (hover: none) { .partner img { filter: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .partner:hover, .partner.reveal.is-in:hover, .partner:hover img { transform: none; } }
