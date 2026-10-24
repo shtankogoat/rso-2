@@ -697,3 +697,26 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @media (max-width: 1100px) {
   .header-socials { display: none; }
 }
+
+/* РСО 2.0: кнопки соцсетей в мобильном меню — ровный ряд, без стилей пунктов меню */
+@media (max-width: 1100px) {
+  .nav .nav-join.socials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .nav .nav-join .social {
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    font-family: var(--body);
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 1;
+  }
+  .nav .nav-join .social svg { flex: none; width: 18px; height: 18px; }
+}
+@media (max-width: 360px) {
+  .nav .nav-join.socials { grid-template-columns: 1fr; }
+}
