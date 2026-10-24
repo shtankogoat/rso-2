@@ -1,0 +1,9 @@
+# Internal materials — not for the public repo
+referencesofwebsite/
+prototypeRSS.pdf
+exportoftgchatRSS.html
+RSSlogo.jpg
+tools/make_logo.py
+*.pdf
+__pycache__/
+.env
