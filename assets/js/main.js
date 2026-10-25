@@ -104,7 +104,39 @@
     $$(".nav a", header).forEach(function (a) {
       a.addEventListener("click", function () { document.body.classList.remove("nav-open"); });
     });
-    var onScroll = function () { header.classList.toggle("is-solid", window.scrollY > 30); };
+    // Прячем шапку при прокрутке вниз, показываем при прокрутке вверх
+    var lastY = window.scrollY;
+    // Вверху — обычная шапка, которая уезжает со страницей.
+    // При прокрутке вверх выезжает закреплённая, при прокрутке вниз прячется.
+    // На главной над слайдером закреплённая шапка прозрачная, ниже — синяя.
+    var hero = $(".page-home .hero");
+    var onScroll = function () {
+      var y = window.scrollY;
+      // в самом верху закреплённая и обычная шапка совпадают — переключаем без рывка
+      if (y <= 0) {
+        header.classList.remove("is-fixed", "is-solid", "is-hidden");
+        lastY = y;
+        return;
+      }
+      if (header.classList.contains("is-fixed")) {
+        header.classList.toggle("is-solid", !hero || y > hero.offsetHeight - header.offsetHeight - 200);
+      }
+      if (Math.abs(y - lastY) < 8) return;
+      var down = y > lastY;
+      lastY = y;
+      if (down) {
+        if (header.classList.contains("is-fixed") && !document.body.classList.contains("nav-open")) header.classList.add("is-hidden");
+      } else if (!header.classList.contains("is-fixed")) {
+        // ставим закреплённую шапку за верхний край без анимации, затем выдвигаем
+        header.classList.add("no-anim", "is-fixed", "is-hidden");
+        header.classList.toggle("is-solid", !hero || y > hero.offsetHeight - header.offsetHeight - 200);
+        void header.offsetHeight;
+        header.classList.remove("no-anim");
+        requestAnimationFrame(function () { header.classList.remove("is-hidden"); });
+      } else {
+        header.classList.remove("is-hidden");
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
   }

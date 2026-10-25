@@ -118,16 +118,26 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- Header ---------- */
 
+/* Прозрачная шапка стоит вверху страницы и уезжает вместе с ней;
+   при прокрутке вверх выезжает закреплённая (.is-fixed): над слайдером прозрачная, ниже — синяя (.is-solid) */
 .site-header {
-  position: fixed;
+  position: absolute;
   inset: 0 0 auto;
   z-index: 60;
   color: var(--white);
   background: var(--navy);
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.6s ease, transform 0.15s ease-out;
 }
+.site-header.is-fixed { position: fixed; }
+.site-header.is-hidden { transform: translateY(-100%); }
+.site-header.no-anim { transition: none; }
+.site-header.is-hidden:has(:focus-visible) { transform: none; }
+@media (prefers-reduced-motion: reduce) { .site-header { transition: background 0.3s, box-shadow 0.3s; } }
 .page-home .site-header:not(.is-solid) { background: linear-gradient(rgba(14, 38, 100, 0.6), rgba(14, 38, 100, 0)); }
-.site-header.is-solid { background: rgba(22, 51, 127, 0.97); box-shadow: 0 6px 24px -12px rgba(0, 0, 0, 0.5); }
+/* Синий фон — отдельным слоем, чтобы переход из прозрачного шёл плавно */
+.site-header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(22, 51, 127, 0.97); opacity: 0; transition: opacity 0.6s ease; pointer-events: none; }
+.site-header.is-solid::before { opacity: 1; }
+.site-header.is-solid { box-shadow: 0 6px 24px -12px rgba(0, 0, 0, 0.5); }
 .header-row {
   display: flex;
   align-items: center;
