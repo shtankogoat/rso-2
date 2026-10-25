@@ -1,4 +1,4 @@
-/* Русское спортивное общество — rusport.org
+﻿/* Русское спортивное общество — rusport.org
    Layout patterns after rgo.ru; palette: РСО 2.0 — синий и белый. */
 
 :root {
@@ -286,7 +286,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* ---------- Hero banner slider ---------- */
 
 .hero { position: relative; color: var(--white); background: var(--navy-deep); overflow: hidden; }
-.hero-slides { position: relative; height: clamp(560px, 86svh, 860px); }
+.hero-slides { position: relative; height: 100vh; height: 100svh; min-height: 560px; }
 .hero-slide {
   position: absolute;
   inset: 0;
@@ -302,9 +302,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(14, 38, 100, 0.88) 0%, rgba(14, 38, 100, 0.62) 45%, rgba(14, 38, 100, 0.3) 80%),
-    linear-gradient(0deg, rgba(14, 38, 100, 0.7) 0%, rgba(14, 38, 100, 0) 40%),
-    rgba(14, 38, 100, 0.2);
+    linear-gradient(90deg, rgba(14, 38, 100, 0.6) 0%, rgba(14, 38, 100, 0.35) 45%, rgba(14, 38, 100, 0.1) 80%),
+    linear-gradient(0deg, rgba(14, 38, 100, 0.5) 0%, rgba(14, 38, 100, 0) 40%);
 }
 /* Slide text sits at the bottom, just above the progress bars (.hero-bar). */
 .hero-content {
