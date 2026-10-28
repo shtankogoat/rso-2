@@ -757,3 +757,24 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .ideas-result { padding-bottom: 0; }
 .section:has(.ideas-result) { padding-bottom: clamp(28px, 3.5vw, 48px); }
 
+
+/* ---------- Единый профиль РСО: вход и вступление ---------- */
+.header-auth { display: flex; align-items: center; gap: 14px; flex: none; }
+.header-login {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--head); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--white); opacity: 0.9; transition: opacity 0.2s;
+}
+.header-login:hover { opacity: 1; }
+.header-login svg { width: 20px; height: 20px; }
+.header-join { min-height: 42px; padding: 0 22px; font-size: 13px; }
+.btn-ghost-light { border-color: rgba(255, 255, 255, 0.45); color: var(--white); }
+.btn-ghost-light:hover { border-color: var(--white); background: rgba(255, 255, 255, 0.1); }
+.nav .nav-auth { gap: 10px; }
+.nav .nav-auth .btn { flex: 1; }
+@media (max-width: 1100px) {
+  .header-auth { display: none; }
+}
+@media (max-width: 1440px) and (min-width: 1101px) {
+  .header-socials { display: none; }
+}

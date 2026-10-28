@@ -4,6 +4,7 @@
   var PROJECTS = window.RSO_PROJECTS || [];
   var AUDIENCES = window.RSO_AUDIENCES || [];
   var SOCIAL = window.RSO_SOCIAL || {};
+  var ACCOUNT = window.RSO_ACCOUNT || { login: "#", register: "#" };
   var LANG = (window.RSO_I18N && window.RSO_I18N.lang) || "ru";
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
@@ -67,6 +68,9 @@
     );
   }
 
+  // Кнопки «Вступить» в контенте страниц берут адрес из RSO_ACCOUNT
+  $$("[data-account]").forEach(function (a) { a.href = ACCOUNT[a.dataset.account] || a.href; });
+
   function renderHeader() {
     var mount = $("#site-header");
     if (!mount) return;
@@ -80,12 +84,17 @@
       NAV.map(function (n) {
         return '<a href="' + n[0] + '"' + (n[0] === page ? ' class="is-active"' : "") + ">" + n[1] + "</a>";
       }).join("") +
+      '<div class="nav-join nav-auth"><a class="btn btn-ghost-light" href="' + ACCOUNT.login + '">Войти</a><a class="btn btn-gold" href="' + ACCOUNT.register + '">Вступить</a></div>' +
       '<div class="nav-join socials">' + socialLinks() + "</div>" +
       "</nav>" +
       '<div class="header-cta header-socials">' + socialIcons() + "</div>" +
       '<div class="lang-switch" role="group" aria-label="Язык / Language" data-no-i18n>' +
       '<button type="button" data-lang="ru"' + (LANG === "ru" ? ' class="is-active" aria-pressed="true"' : ' aria-pressed="false"') + ">РУ</button>" +
       '<button type="button" data-lang="en"' + (LANG === "en" ? ' class="is-active" aria-pressed="true"' : ' aria-pressed="false"') + ">EN</button>" +
+      "</div>" +
+      '<div class="header-auth">' +
+      '<a class="header-login" href="' + ACCOUNT.login + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>Войти</a>' +
+      '<a class="btn btn-gold header-join" href="' + ACCOUNT.register + '">Вступить</a>' +
       "</div>" +
       '<button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="nav"><span></span></button>' +
       "</div></header>";

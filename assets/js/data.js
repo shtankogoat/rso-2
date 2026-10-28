@@ -81,6 +81,13 @@ window.RSO_AUDIENCES = [
   }
 ];
 
+// Единый профиль РСО: вход и регистрация на B2B-платформе (один аккаунт для всех сервисов РСО).
+// TODO: заменить на адрес платформы на домене, когда её развернём.
+window.RSO_ACCOUNT = {
+  login: "http://localhost:3000/login",
+  register: "http://localhost:3000/register"
+};
+
 window.RSO_SOCIAL = {
   telegram: "https://t.me/rusport_org",
   max: "https://max.ru/channel_rusport",

@@ -34,6 +34,8 @@
 
     // Hero slider
     "На сайт премии": "Visit the award website",
+    "Войти": "Log in",
+    "Вступить": "Join",
     "Премия «Лидеры индустрии спорта»": "The Sport Industry Leaders Award",
     "Здоровая нация — сильная нация": "A healthy nation is a strong nation",
     "Анкета скоро появится": "The application form is coming soon",
